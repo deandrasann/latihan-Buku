@@ -6,7 +6,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body style="background-color: #F5F5F5">
-
+<a href="{{route('buku.create')}}" class="btn btn-primary float-end m-4" 
+    style="width: 200px; height : 50px"> Tambah buku</a>
 <div class="container mt-5">
     <h2 class="text-center">Daftar Buku</h2>
 
@@ -28,6 +29,19 @@
                 <td>{{ $buku->penulis }}</td>
                 <td>{{ 'Rp. '.number_format($buku->harga, 2, ',', '.') }}</td>
                 <td>{{ \Carbon\Carbon::parse($buku->tgl_terbit)->format('d/m/Y') }}</td>
+                <td>
+                    @csrf
+                    <a href="{{route('buku.edit', $buku->id)}}" class="btn btn-primary">Edit </a>
+                </td>
+                <td>
+                    <form action="{{route('buku.destroy', $buku->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button onclick="return confirm('Yakin untuk menghapus?')" type="submit" class="btn btn-danger">
+                             Hapus </button>
+                    </form>
+                </td>
+
             </tr>
             @endforeach
         </tbody>

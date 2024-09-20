@@ -23,15 +23,21 @@ class BukuController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $buku = new Buku();
+        $buku->judul = $request->judul;
+        $buku->penulis = $request->penulis;
+        $buku->harga = $request->harga;
+        $buku->tgl_terbit = $request->tgl_terbit;
+        return redirect ('/buku');
     }
 
     /**
@@ -39,15 +45,17 @@ class BukuController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request , $id)
     {
-        //
+        $buku = Buku::find($id);
+        return view('edit', compact('buku'));
+        
     }
 
     /**
@@ -55,14 +63,23 @@ class BukuController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $buku = Buku::find($id);
+        // dd($buku);
+        $buku->judul = $request->judul;
+        $buku->penulis = $request->penulis;
+        $buku->harga = $request->harga;
+        $buku->tgl_terbit = $request->tgl_terbit;
+        $buku->save();
+        return redirect()->route('index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $buku = Buku::find($id);
+        $buku->delete();
+        return redirect()->route('index');
     }
 }
