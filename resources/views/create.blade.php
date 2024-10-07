@@ -9,9 +9,9 @@
 </head>
 <body>
     <h4>Edit Buku</h4>
-    <form method="post" action="{{ route('buku.store') }}">
+    <form method="post" action="{{ route('buku.add') }}">
         @csrf
-        <div>Judul <input type="text" name="judul"></div>
+        <div>Nama <input type="text" name="nama"></div>
         <div>Penulis <input type="text" name="penulis"></div>
         <div>Harga <input type="text" name="harga"></div>
         <div>Tanggal Terbit <input type="date" name="tgl_terbit"></div>

@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($data_buku as $buku)
+            @foreach($buku as $data_buku)
             <tr>
                 <td>{{ $buku->id }}</td>
                 <td>{{ $buku->Judul }}</td>
@@ -34,7 +34,7 @@
                     <a href="{{route('buku.edit', $buku->id)}}" class="btn btn-primary">Edit </a>
                 </td>
                 <td>
-                    <form action="{{route('buku.destroy', $buku->id)}}" method="POST">
+                    <form action="{{route('buku.delete', $buku->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button onclick="return confirm('Yakin untuk menghapus?')" type="submit" class="btn btn-danger">
