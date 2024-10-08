@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/buku', [BukuController::class,'index'])->name('home');
-Route::post('/buku', [BukuController::class,'store'])->name('buku.store');  
+Route::get('/buku', [BukuController::class,'index'])->name('index');
+Route::post('/buku', [BukuController::class,'store'])->name('buku.store');
 Route::get('/buku/create', [BukuController::class,'create'])->name('buku.create');
 
 Route::delete('/buku/{id}', [BukuController::class,'destroy'])->name('buku.destroy');

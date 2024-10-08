@@ -12,7 +12,7 @@
     <form method="post" action="{{ route('buku.update', $buku->id) }}">
         @csrf
         {{-- value apa yang diisi, judul  --}}
-        <div>Judul <input value="{{$buku->Judul}}" type="text" name="judul"></div> 
+        <div>Judul <input value="{{$buku->Judul}}" type="text" name="judul"></div>
         <div>Penulis <input value="{{$buku->penulis}}" type="text" name="penulis"></div>
         <div>Harga <input value="{{$buku->harga}}" type="text" name="harga"></div>
         <div>Tanggal Terbit <input type="date" name="tgl_terbit" value="{{$buku->tgl_terbit }}"></div>

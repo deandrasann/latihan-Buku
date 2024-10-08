@@ -12,10 +12,11 @@ class BukuController extends Controller
      */
     public function index()
     {
-        $data_buku = Buku::all()->sortByDesc('id'); 
+        $data_buku = Buku::all()->sortByDesc('id');
         $rowCount = Buku::count();
         $totalPrice = Buku::sum('harga');
         return view('index', compact('data_buku', 'rowCount', 'totalPrice'));
+        //valuenya dari controller
     }
 
     /**
@@ -32,6 +33,9 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
+        // BUKU AMBIL DR MODEL, REQUEST DARI VIEW
+        //REQUEST -> SESUAI NAMA DI FIELD 'NAME' BLADE
+        //BAWAH SENDIRI JANGAN LUPA DISAVE 
         $buku = new Buku();
         $buku->judul = $request->judul;
         $buku->penulis = $request->penulis;
@@ -46,17 +50,17 @@ class BukuController extends Controller
      */
     public function show(string $id)
     {
-        
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request , $id)
+    public function edit(Request $request , string $id)
     {
         $buku = Buku::find($id);
         return view('edit', compact('buku'));
-        
+
     }
 
     /**
@@ -65,10 +69,12 @@ class BukuController extends Controller
     public function update(Request $request, string $id)
     {
         $buku = Buku::find($id);
-        // dd($buku);
-        $buku->judul = $request->judul;
+
+        $buku->Judul = $request->judul;
         $buku->penulis = $request->penulis;
         $buku->harga = $request->harga;
+        $buku->tgl_terbit = $request->tgl_terbit;
+        $buku->save();
         return redirect()->route('index');
     }
 

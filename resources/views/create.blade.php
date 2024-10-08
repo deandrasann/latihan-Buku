@@ -8,10 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h4>Edit Buku</h4>
-    <form method="post" action="{{ route('buku.add') }}">
+    <h4>Create</h4>
+    <form method="post" action="{{ route('buku.store') }}">
+        {{-- ACTION : TUJUAN DIMANA FORM AKAN DIKKIRIM --}}
         @csrf
-        <div>Nama <input type="text" name="nama"></div>
+        <div>Judul <input type="text" name="judul"></div>
         <div>Penulis <input type="text" name="penulis"></div>
         <div>Harga <input type="text" name="harga"></div>
         <div>Tanggal Terbit <input type="date" name="tgl_terbit"></div>
